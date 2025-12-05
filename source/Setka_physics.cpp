@@ -396,26 +396,68 @@ void Setka::Init_physics(void)
 	// »нтерпол€ци€
 	if (false)
 	{
-		Interpol SS = Interpol("For_intertpolate_1.bin");
+		Interpol SS = Interpol("For_intertpolate_137.bin");
 		std::unordered_map<string, double> parameters;
 		bool fine_int;
 
 		for (auto& i : this->All_Cell)
 		{
-			if (norm2(i->center[0][0], i->center[0][1], i->center[0][2]) < 10.0)
+			fine_int = SS.Get_param(i->center[0][0], i->center[0][1], i->center[0][2], parameters);
+			if (fine_int == false || std::isnan(parameters["rho_H1"]) == true)
 			{
-				fine_int = SS.Get_param(i->center[0][0], i->center[0][1], i->center[0][2], 
-					parameters);
+				i->parameters[0]["rho_Pui_1"] = 0.000000001;
+				i->parameters[0]["rho_Pui_2"] = 0.000000001;
+				i->parameters[0]["p_Pui_1"] = 0.000000001;
+				i->parameters[0]["p_Pui_2"] = 0.000000001;
 
-				i->parameters[0]["rho_H1"] = parameters["rho_H1"];
-				i->parameters[0]["Vx_H1"] = parameters["Vx_H1"];
-				i->parameters[0]["Vy_H1"] = parameters["Vy_H1"];
-				i->parameters[0]["Vz_H1"] = parameters["Vz_H1"];
-				i->parameters[0]["p_H1"] = parameters["p_H1"];
-
+				i->parameters[0]["rho_H5"] = 0.000000001;
+				i->parameters[0]["rho_H6"] = 0.000000001;
+				i->parameters[0]["rho_H7"] = 0.000000001;
+				i->parameters[0]["rho_H8"] = 0.000000001;
+				i->parameters[0]["rho_H9"] = 0.000000001;
 
 				i->parameters[1] = i->parameters[0];
+				continue;
 			}
+
+
+			vector <string> name_vec;
+			name_vec.push_back("H1");
+			name_vec.push_back("H2");
+			name_vec.push_back("H3");
+			name_vec.push_back("H4");
+			name_vec.push_back("H5");
+			name_vec.push_back("H6");
+			name_vec.push_back("H7");
+			name_vec.push_back("H8");
+			name_vec.push_back("H9");
+			for (const auto name_H : name_vec)
+			{
+				i->parameters[0]["rho_" + name_H] = parameters["rho_" + name_H];
+				i->parameters[0]["Vx_" + name_H] = parameters["Vx_" + name_H];
+				i->parameters[0]["Vy_" + name_H] = parameters["Vy_" + name_H];
+				i->parameters[0]["Vz_" + name_H] = parameters["Vz_" + name_H];
+				i->parameters[0]["p_" + name_H] = parameters["p_" + name_H];
+
+				if (i->parameters[0]["rho_" + name_H] <= 0.0) i->parameters[0]["rho_" + name_H] = 0.0000001;
+				if (i->parameters[0]["p_" + name_H] <= 0.0) i->parameters[0]["p_" + name_H] = i->parameters[0]["rho_" + name_H];
+			}
+
+			i->parameters[0]["rho_Pui_1"] = parameters["rho_Pui_1"];
+			i->parameters[0]["rho_Pui_2"] = parameters["rho_Pui_2"];
+			i->parameters[0]["p_Pui_1"] = parameters["p_Pui_1"];
+			i->parameters[0]["p_Pui_2"] = parameters["p_Pui_2"];
+
+			if (std::isnan(i->parameters[0]["rho_H1"]) == true)
+			{
+				cout << "Error uioehf83y4897rfgeg3g3 " << endl;
+				cout << i->parameters[0]["rho_H1"] << " " << i->parameters[0]["rho_H2"] << " " << i->parameters[0]["rho_H3"] << endl;
+				cout << parameters["rho_H1"] << " " << parameters["rho_H2"] << " " << parameters["rho_H3"] << endl;
+				exit(-1);
+			}
+
+			i->parameters[1] = i->parameters[0];
+			
 		}
 	}
 
@@ -685,6 +727,8 @@ void Setka::Init_physics(void)
 		{
 			this->Cell_Center->parameters[0][num] /= nk;
 		}
+
+		if (this->Cell_Center->parameters[0]["rho_H1"] <= 0.0) this->Cell_Center->parameters[0]["rho_H1"] = 0.0000001;
 
 		this->Cell_Center->parameters[1] = this->Cell_Center->parameters[0];
 	}
@@ -1739,7 +1783,7 @@ void Setka::Go(bool is_inner_area, size_t steps__, short int metod)
 
 	for (unsigned int step = 1; step <= steps; step++)
 	{
-		if (step % 100 == 0 || step == 10)
+		if (step % 100 == 0 || step == 10 || step == 1 || step == 2)
 		{
 			cout << "Global step = " << step << endl;
 			whach(time);

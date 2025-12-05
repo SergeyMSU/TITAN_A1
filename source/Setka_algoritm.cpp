@@ -33,8 +33,9 @@ void Setka::Algoritm(short int alg, Setka* Smain)
 		this->Smooth_head_HP3();
 		this->Smooth_head_TS3();
 
+		this->Go(true, 3000, 1); // 400   1
 
-		for (int i = 1; i <= 6 * 6; i++) // 6 * 2   12 * 5
+		for (int i = 1; i <= 3 * 3; i++) // 6 * 2   12 * 5
 		{
 			auto start = std::chrono::high_resolution_clock::now();
 			cout << "IIIII = " << i << endl;
@@ -43,15 +44,11 @@ void Setka::Algoritm(short int alg, Setka* Smain)
 			cout << "All time = " << this->phys_param->ALL_Time << endl;
 			cout << "All time (in days) = " << this->phys_param->ALL_Time / 0.00142358 << endl;
 			cout << "All time (in years) = " << this->phys_param->ALL_Time / 0.519607 << endl;
+			
+			this->Go(true, 100, 1); // 400   1 
 			this->Go(false, 400, 1); // 400   1
-			if (i % 100000 == 0)
-			{
-				this->Go(true, 1000, 1); // 400   1 
-			}
-			else
-			{
-				this->Go(true, 100, 1); // 400   1 
-			}
+			
+
 			this->Smooth_head_HP3();
 			this->Smooth_head_TS3();
 
@@ -349,11 +346,11 @@ void Setka::Algoritm(short int alg, Setka* Smain)
 	else if (alg == 4)
 	{
 		unsigned int st = 0;
-#pragma omp parallel for schedule(dynamic)
+		#pragma omp parallel for schedule(dynamic)
 		for (size_t idx = 0; idx < this->All_Cell.size(); ++idx)
 		{
 			auto A = this->All_Cell[idx];
-#pragma omp critical (gergergerg4) 
+			#pragma omp critical (gergergerg4) 
 			{
 				st++;
 				if (st % 10000 == 0)
