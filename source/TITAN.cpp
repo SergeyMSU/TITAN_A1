@@ -36,7 +36,8 @@ int main()
     // —читываем физические параметры и геометрическое положение узлов из файла (предыдущего расчЄта)
     //S1.Download_cell_parameters("parameters_0060.bin");   
 
-    S1.Download_cell_parameters("parameters_0069.bin");
+    //S1.Download_cell_parameters("parameters_0065.bin");
+    S1.Download_cell_parameters("parameters_0068.bin");
 
 
     //S1.Download_cell_parameters("parameters_promeg_1124.bin");
@@ -165,7 +166,7 @@ int main()
 
 
 
-    S1.Save_cell_parameters("parameters_0068.bin");
+    S1.Save_cell_parameters("parameters_0069.bin");
     //S1.Save_cell_parameters("parameters_0138.bin");
     //S1.Save_cell_pui_parameters("parameters_0026.bin");
 
