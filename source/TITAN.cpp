@@ -244,11 +244,11 @@ int main()
     S1.Tecplot_print_1D(&SS, Eigen::Vector3d(0.0, 0.0, 0.0),
         Eigen::Vector3d(1.0, 0.0, 0.0), "_(1, 0, 0)_", 500.0);
 
-    S1.Tecplot_print_1D(&SS, Eigen::Vector3d(0.0, 0.0, 0.0),
+    /*S1.Tecplot_print_1D(&SS, Eigen::Vector3d(0.0, 0.0, 0.0),
         Eigen::Vector3d(-1.0, 0.0, 0.0), "_(-1, 0, 0)_", 500.0);
 
     S1.Tecplot_print_1D(&SS, Eigen::Vector3d(0.0, 0.0, 0.0),
-        Eigen::Vector3d(0.0, 1.0, 0.0), "_(0, 1, 0)_", 500.0);
+        Eigen::Vector3d(0.0, 1.0, 0.0), "_(0, 1, 0)_", 500.0);*/
 
     S1.Tecplot_print_2D(&SS, 0.0, 0.0, 1.0, -0.00001, "_2d_(0, 0, 1, 0)_");
 

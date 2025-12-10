@@ -353,6 +353,9 @@ void Setka::Init_physics(void)
 				i->parameters[0]["p_Pui_2"] = 0.000000001;
 			}
 
+			//i->parameters[0]["rho_H2"] /= 2.0;
+			//i->parameters[0]["p_H2"] /= 2.0;
+
 
 			i->parameters[1] = i->parameters[0];
 

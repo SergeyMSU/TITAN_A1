@@ -781,6 +781,7 @@ void Phys_param::Plasma_components_2(const short int& zone,
             (4.0 + 4.0 * MF_meDmp) * (rho_Pui_1 + rho_Pui_2))
             / (4.0 * (1.0 + MF_meDmp));
 
+
         param["T_Th"] = 8.0 * (1.0 + MF_meDmp) * (p - p_Pui_1 - p_Pui_2) /
             (8.0 * rho - (7.0 - al + (-1.0 + al) * MF_meDmp) * rho_He -
                 4.0 * (1.0 + MF_meDmp) * (rho_Pui_1 + rho_Pui_2));

@@ -4467,6 +4467,7 @@ void Setka::Tecplot_print_1D(Interpol* Int1, const Eigen::Vector3d& Origin,
 	Eigen::Vector3d C;
 	std::unordered_map<string, double> parameters;
 	bool fine_int;
+	Cell* previos = nullptr;
 
 	for (size_t i = 0; i < N; i++)
 	{
@@ -4476,6 +4477,10 @@ void Setka::Tecplot_print_1D(Interpol* Int1, const Eigen::Vector3d& Origin,
 		fine_int = Int1->Get_param(C(0), C(1), C(2), parameters);
 		//cout << "Int1->Get_param B" << endl;
 		if (fine_int == false) continue;
+
+		Cell* Cell = this->Find_cell_point(C(0), C(1), C(2), 0, previos);
+		short int zone = 4;
+		if (Cell != nullptr) zone = this->determ_zone(Cell, 0);
 
 		fout << 1.0 * i / N * leng << " " << C(0) << " " << C(1) << " " << C(2);
 		for (auto& nam : Int1->param_names)
@@ -4502,16 +4507,14 @@ void Setka::Tecplot_print_1D(Interpol* Int1, const Eigen::Vector3d& Origin,
 		}
 
 		unordered_map<string, double> param;
-		short int zone = 1;
-		if (parameters["Q"] / parameters["rho"] < 50.0)
+		
+
+		this->phys_param->Plasma_components(zone, parameters, param, true);
+
+		/*if (zone == 2 && C(0) > 20.0)
 		{
-			zone = 2;
-		}
-		else
-		{
-			zone = 3;
-		}
-		this->phys_param->Plasma_components(zone, parameters, param, false);
+			cout << parameters["rho"] << " " << param["rho_Th"] << " " << parameters["rho_Pui_1"] << " " << parameters["rho_Pui_2"] << endl;
+		}*/
 
 		if (param["rho_Th"] < 1e-8) param["rho_Th"] = 1e-8;
 

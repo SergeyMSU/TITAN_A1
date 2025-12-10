@@ -33,7 +33,7 @@ void Setka::Algoritm(short int alg, Setka* Smain)
 		this->Smooth_head_HP3();
 		this->Smooth_head_TS3();
 
-		this->Go(true, 10000, 1); // 400   1
+		//this->Go(true, 10000, 1); // 400   1
 
 		for (int i = 1; i <= 3 * 5; i++) // 6 * 2   12 * 5
 		{
@@ -45,8 +45,8 @@ void Setka::Algoritm(short int alg, Setka* Smain)
 			cout << "All time (in days) = " << this->phys_param->ALL_Time / 0.00142358 << endl;
 			cout << "All time (in years) = " << this->phys_param->ALL_Time / 0.519607 << endl;
 			
-			this->Go(true, 1000, 1); // 400   1 
-			this->Go(false, 100, 1); // 400   1
+			this->Go(true, 100, 1); // 400   1 
+			this->Go(false, 400, 1); // 400   1
 			
 
 			this->Smooth_head_HP3();
