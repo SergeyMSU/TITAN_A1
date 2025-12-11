@@ -41,6 +41,13 @@ short int Gran::Get_method()
 				return 0;                            // Лакс во втором ряду от гелиопаузы
 			}
 		}
+
+		// Временно убираем HLLD
+		if (this->cells[0]->type == Type_cell::Zone_2 && this->center[0][0] < -70.0)
+		{
+			return 0;
+		}
+
 	}
 
 	return 3;
