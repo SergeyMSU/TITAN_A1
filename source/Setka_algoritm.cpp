@@ -35,7 +35,7 @@ void Setka::Algoritm(short int alg, Setka* Smain)
 
 		//this->Go(true, 10000, 1); // 400   1
 
-		for (int i = 1; i <= 8 * 2; i++) // 6 * 2   12 * 5
+		for (int i = 1; i <= 8 * 14; i++) // 6 * 2   12 * 5
 		{
 			auto start = std::chrono::high_resolution_clock::now();
 			cout << "IIIII = " << i << endl;
@@ -95,10 +95,30 @@ void Setka::Algoritm(short int alg, Setka* Smain)
 
 			//this->Init_physics();
 
-			if (i % 12 == 0)
+			if (i % 8 == 0)
 			{
 				string namn = "parameters_promeg_11" + to_string(i) + ".bin";
 				this->Save_cell_parameters(namn);
+
+				if (true)
+				{
+					this->Save_for_interpolate("For_intertpolate_0059-.bin", false);
+					Interpol SS = Interpol("For_intertpolate_0059-.bin");
+
+					this->Tecplot_print_1D(&SS, Eigen::Vector3d(0.0, 0.0, 0.0),
+						Eigen::Vector3d(1.0, 0.0, 0.0), "_(1, 0, 0)_" + to_string(this->phys_param->ALL_Time) + "_", 500.0);
+
+					this->Tecplot_print_1D(&SS, Eigen::Vector3d(0.0, 0.0, 0.0),
+						Eigen::Vector3d(cos(const_pi / 18.0), sin(const_pi / 18.0), 0.0), "_(10 deg, 0)_" + to_string(this->phys_param->ALL_Time) + "_", 500.0);
+
+					this->Tecplot_print_1D(&SS, Eigen::Vector3d(0.0, 0.0, 0.0),
+						Eigen::Vector3d(-1.0, 0.0, 0.0), "_(-1, 0, 0)_" + to_string(this->phys_param->ALL_Time) + "_", 500.0);
+
+					this->Tecplot_print_1D(&SS, Eigen::Vector3d(0.0, 0.0, 0.0),
+						Eigen::Vector3d(0.0, 1.0, 0.0), "_(0, 1, 0)_" + to_string(this->phys_param->ALL_Time) + "_", 500.0);
+
+					this->Tecplot_print_2D(&SS, 0.0, 0.0, 1.0, -0.00001, "_2d_(0, 0, 1, 0)_" + to_string(this->phys_param->ALL_Time) + "_");
+				}
 			}
 
 			auto end = std::chrono::high_resolution_clock::now();

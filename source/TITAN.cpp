@@ -37,10 +37,9 @@ int main()
     //S1.Download_cell_parameters("parameters_0060.bin");   
 
     //S1.Download_cell_parameters("parameters_0065.bin");
-    //S1.Download_cell_parameters("parameters_0073.bin");
-    S1.Download_cell_parameters("parameters_promeg_1112.bin");
+    S1.Download_cell_parameters("parameters_0073.bin");
 
-    // 71 до включения фигни на HP  -> 70 -> 72
+    // 71 до включения фигни на HP  -> 70 -> 72  -> отключил все костыли  -> 73
 
 
     //S1.Download_cell_parameters("parameters_promeg_1124.bin");
