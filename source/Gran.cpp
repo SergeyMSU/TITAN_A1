@@ -12,7 +12,7 @@ short int Gran::Get_method()
 
 	//if (norm2(0.0, this->center[0][1], this->center[0][2]) >= 330.0) return 0;
 
-	if (false)//(this->type2 == Type_Gran_surf::Us)
+	if (this->type2 == Type_Gran_surf::Us)
 	{
 
 		if (this->cells[0]->type == Type_cell::Zone_1)
