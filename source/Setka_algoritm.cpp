@@ -35,7 +35,7 @@ void Setka::Algoritm(short int alg, Setka* Smain)
 
 		//this->Go(true, 10000, 1); // 400   1
 
-		for (int i = 1; i <= 6 * 7; i++) // 6 * 2   12 * 5
+		for (int i = 1; i <= 6 * 9; i++) // 6 * 2   12 * 5
 		{
 			auto start = std::chrono::high_resolution_clock::now();
 			cout << "IIIII = " << i << endl;
@@ -45,9 +45,9 @@ void Setka::Algoritm(short int alg, Setka* Smain)
 			cout << "All time (in days) = " << this->phys_param->ALL_Time / 0.00142358 << endl;
 			cout << "All time (in years) = " << this->phys_param->ALL_Time / 0.519607 << endl;
 			
-			if (i % 5 == 0)
+			if (i % 6 == 0)
 			{
-				//this->Go(true, 1000, 1); // 400   1 
+				this->Go(true, 1000, 1); // 400   1 
 			}
 			else
 			{
