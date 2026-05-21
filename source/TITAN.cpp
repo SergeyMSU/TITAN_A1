@@ -41,7 +41,7 @@ int main()
     //S1.Download_cell_parameters("parameters_0080.bin");
 
     // 71 до включения фигни на HP  -> 70 -> 72  -> отключил все костыли  -> 73
-
+    // 81 - ИТОГОВАЯ до попытки улучшить вблизи оси
 
     //S1.Download_cell_parameters("parameters_promeg_1124.bin");
 
@@ -109,7 +109,7 @@ int main()
     }
 
     // Выбор основного алгоритма расчёта (в данной функции представлены все варианты расчёта: атомы, мгд и т.д.), см. саму функцию
-    //S1.Algoritm(1, &S1);
+    S1.Algoritm(1, &S1);
     //S1.Algoritm(5, &S1);
 
     //return 0;
@@ -169,7 +169,7 @@ int main()
 
 
 
-    //S1.Save_cell_parameters("parameters_0081.bin");
+    S1.Save_cell_parameters("parameters_0082.bin");
     //S1.Save_cell_parameters("parameters_0138.bin");
     //S1.Save_cell_pui_parameters("parameters_0026.bin");
 
