@@ -18,3 +18,17 @@ TS_srez__2d_(0, 0, 1, 0)_.txt
 Tecplot_Tecplot_print_1D_(1, 0, 0)_old.txt
 
 *.txt
+
+*.filters
+
+TITAN_A1/.vs/TITAN_A1/v16/.suo
+
+*.db
+
+*.ipch
+
+*.vcxproj
+
+*.sln
+
+*.user

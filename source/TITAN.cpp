@@ -37,7 +37,7 @@ int main()
     //S1.Download_cell_parameters("parameters_0060.bin");   
 
     //S1.Download_cell_parameters("parameters_0065.bin");
-    S1.Download_cell_parameters("parameters_0081.bin");
+    S1.Download_cell_parameters("parameters_0082.bin");
     //S1.Download_cell_parameters("parameters_0080.bin");
 
     // 71 до включения фигни на HP  -> 70 -> 72  -> отключил все костыли  -> 73
@@ -245,7 +245,7 @@ int main()
     cout << "AAA" << endl;
 
     S1.Tecplot_print_1D(&SS, Eigen::Vector3d(0.0, 0.0, 0.0),
-        Eigen::Vector3d(1.0, 0.0, 0.0), "_(1, 0, 0)_", 500.0);
+        Eigen::Vector3d(1.0, 0.0, 0.0), "_no_razriv_(1, 0, 0)_", 500.0);
 
     /*S1.Tecplot_print_1D(&SS, Eigen::Vector3d(0.0, 0.0, 0.0),
         Eigen::Vector3d(-1.0, 0.0, 0.0), "_(-1, 0, 0)_", 500.0);
@@ -253,12 +253,12 @@ int main()
     S1.Tecplot_print_1D(&SS, Eigen::Vector3d(0.0, 0.0, 0.0),
         Eigen::Vector3d(0.0, 1.0, 0.0), "_(0, 1, 0)_", 500.0);*/
 
-    S1.Tecplot_print_2D(&SS, 0.0, 0.0, 1.0, -0.00001, "_2d_(0, 0, 1, 0)_");
+    S1.Tecplot_print_2D(&SS, 0.0, 0.0, 1.0, -0.00001, "_no_razriv_2d_(0, 0, 1, 0)_");
 
     Eigen::Vector3d eex(1.0, 0.0, 0.0);
     Eigen::Vector3d eey(0.0, 0.0, 1.0);
     Eigen::Vector3d centr_sys(0.0, 0.0, 0.0);
-    S1.Tecplot_print_2D(&SS, 0.0, 1.0, 0.0, -0.00001, "_2d_(0, 1, 0, 0)_", false, eex, eey, centr_sys);
+    S1.Tecplot_print_2D(&SS, 0.0, 1.0, 0.0, -0.00001, "_no_razriv_2d_(0, 1, 0, 0)_", false, eex, eey, centr_sys);
 
 
     cout << "F " << endl;
