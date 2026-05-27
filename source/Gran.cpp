@@ -20,20 +20,6 @@ short int Gran::Get_method()
 			return 2;
 		}
 
-		//if(norm2(0.0, this->center[0][1], this->center[0][2]) < 10.0) return 3;
-		if (norm2(0.0, this->center[0][1], this->center[0][2]) < 10.0)
-		{
-			for (auto& i : this->yzels)
-			{
-				if (i->type == Type_yzel::HP)
-				{
-					return 0;                           // Лакс вдоль гелиопаузы
-				}
-			}
-
-			return 3;
-		}
-
 		bool b1 = false;
 		bool b2 = false;
 		bool b3 = false;
